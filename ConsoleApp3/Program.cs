@@ -57,13 +57,27 @@ namespace ConsoleApp3
                 {
                     UserLogin login = new UserLogin(connectionString);
                     bool isLoggedIn = login.LoginSystem();
-
                     if (isLoggedIn)
                     {
                         Console.Clear();
                         UserDashboard dashboard = new UserDashboard(connectionString);
-                        dashboard.ShowDashboard(login.GetEmail(), login.GetPassword());
+                        AdminDashboard adminDashboard = new AdminDashboard(connectionString);
+                        string email = login.GetEmail();
+                        string password = login.GetPassword();
+
+                        if (email == "admin" && password == "123")
+                        {
+                            
+                            adminDashboard.ShowDashboard(email, password);
+                            Console.Clear();
+                        }
+                        else
+                        {
+                            dashboard.ShowDashboard(email, password);
+                            Console.Clear();
+                        }
                     }
+
                     else
                     {
                         Console.WriteLine("Invalid username or password. Login failed.");

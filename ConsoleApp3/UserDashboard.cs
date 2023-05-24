@@ -23,19 +23,7 @@ public void ShowDashboard(string email, string password)
 
         while (isLoggedIn)
         {
-            Console.ForegroundColor = ConsoleColor.Green;
-            Console.WriteLine("".PadRight(Console.WindowWidth, '='));
-            Console.ForegroundColor = ConsoleColor.Black;
-            Console.WriteLine("|".PadRight(Console.WindowWidth - 1) + "|");
-            Console.ForegroundColor = ConsoleColor.Black;
-            Console.WriteLine("|".PadRight(Console.WindowWidth - 1) + "|");
-            Console.ForegroundColor = ConsoleColor.Black;
-            Console.WriteLine("|".PadRight(Console.WindowWidth - 1) + "|");
-                Console.WriteLine("|      User DashBoard     |");
-                Console.ForegroundColor = ConsoleColor.Green;
-            Console.WriteLine("".PadRight(Console.WindowWidth, '='));
-            Console.ForegroundColor = ConsoleColor.Green;
-            Console.WriteLine("|".PadRight(Console.WindowWidth - 1) + "|");
+            Console.WriteLine("|          User DashBoard            |");
             Console.ForegroundColor = ConsoleColor.Blue;
             Console.WriteLine("|    1     |      View Profile       |");
             Console.ForegroundColor = ConsoleColor.DarkBlue;
@@ -50,10 +38,10 @@ public void ShowDashboard(string email, string password)
             //Console.WriteLine("|    6     |         Edit User       |");
             Console.ForegroundColor = ConsoleColor.DarkGray;
             Console.WriteLine("|    6     |          Log Out        |");
-            Console.ForegroundColor = ConsoleColor.Green;
-            Console.WriteLine("|".PadRight(Console.WindowWidth - 1) + "|");
-            Console.ForegroundColor = ConsoleColor.Green;
-            Console.WriteLine("".PadRight(Console.WindowWidth, '='));
+            //Console.ForegroundColor = ConsoleColor.Green;
+            //Console.WriteLine("|".PadRight(Console.WindowWidth - 1) + "|");
+            //Console.ForegroundColor = ConsoleColor.Green;
+            //Console.WriteLine("".PadRight(Console.WindowWidth, '='));
             Console.WriteLine();
 
             Console.Write("Enter your choice: ");
@@ -96,6 +84,7 @@ public void ShowDashboard(string email, string password)
                                 Console.WriteLine("Changing Password");
                                 // Implement the logic for changing the password
                                 break;
+
                             case "3":
                                 Console.WriteLine("Going back to User Dashboard...");
                                 isViewingProfile = false; // Exit the profile view loop and go back to the User Dashboard
@@ -149,7 +138,7 @@ public void ShowDashboard(string email, string password)
         }
     }
 
-    public void ViewProfile(string email, string password)
+        public void ViewProfile(string email, string password)
         {
             Console.WriteLine("Viewing Profile...");
 
