@@ -1,72 +1,155 @@
 ﻿using System;
 using System.Data.SqlClient;
+using System.Linq;
 
 namespace ConsoleApp3
 {
     public class UserDashboard
     {
-
         private string connectionString;
-
         public UserDashboard(string connectionString)
         {
             this.connectionString = connectionString;
         }
-        public void ShowDashboard(string email, string password)
+       
+
+public void ShowDashboard(string email, string password)
+    {
+        Console.Clear();
+        Console.SetWindowSize(Console.LargestWindowWidth, Console.LargestWindowHeight); // Set the console window size to the largest available
+
+        bool isLoggedIn = true;
+        UserLogin login = new UserLogin(connectionString); // Instantiate UserLogin class
+
+        while (isLoggedIn)
         {
-            bool isLoggedIn = true;
-            UserLogin login = new UserLogin(connectionString); // Instantiate UserLogin class
+            Console.ForegroundColor = ConsoleColor.Green;
+            Console.WriteLine("".PadRight(Console.WindowWidth, '='));
+            Console.ForegroundColor = ConsoleColor.Black;
+            Console.WriteLine("|".PadRight(Console.WindowWidth - 1) + "|");
+            Console.ForegroundColor = ConsoleColor.Black;
+            Console.WriteLine("|".PadRight(Console.WindowWidth - 1) + "|");
+            Console.ForegroundColor = ConsoleColor.Black;
+            Console.WriteLine("|".PadRight(Console.WindowWidth - 1) + "|");
+                Console.WriteLine("|      User DashBoard     |");
+                Console.ForegroundColor = ConsoleColor.Green;
+            Console.WriteLine("".PadRight(Console.WindowWidth, '='));
+            Console.ForegroundColor = ConsoleColor.Green;
+            Console.WriteLine("|".PadRight(Console.WindowWidth - 1) + "|");
+            Console.ForegroundColor = ConsoleColor.Blue;
+            Console.WriteLine("|    1     |      View Profile       |");
+            Console.ForegroundColor = ConsoleColor.DarkBlue;
+            Console.WriteLine("|    2     |        View Blogs       |");
+            Console.ForegroundColor = ConsoleColor.Red;
+            Console.WriteLine("|    3     |       Delete Blogs      |");
+            Console.ForegroundColor = ConsoleColor.Magenta;
+            Console.WriteLine("|    4     |        Edit Blogs       |");
+            Console.ForegroundColor = ConsoleColor.Cyan;
+            Console.WriteLine("|    5     |       Create Blog       |");
+            //Console.ForegroundColor = ConsoleColor.DarkYellow;
+            //Console.WriteLine("|    6     |         Edit User       |");
+            Console.ForegroundColor = ConsoleColor.DarkGray;
+            Console.WriteLine("|    6     |          Log Out        |");
+            Console.ForegroundColor = ConsoleColor.Green;
+            Console.WriteLine("|".PadRight(Console.WindowWidth - 1) + "|");
+            Console.ForegroundColor = ConsoleColor.Green;
+            Console.WriteLine("".PadRight(Console.WindowWidth, '='));
+            Console.WriteLine();
 
-            while (isLoggedIn)
+            Console.Write("Enter your choice: ");
+            string choice = Console.ReadLine();
+
+            Console.Clear();
+
+            switch (choice)
             {
-                Console.WriteLine("User Dashboard");
-                Console.WriteLine("1. View Profile");
-                Console.WriteLine("2. View Blogs");
-                Console.WriteLine("3. Delete Blogs");
-                Console.WriteLine("4. Edit Blogs");
-                Console.WriteLine("5. Create Blog");
-                Console.WriteLine("6. Logout");
+                case "1":
+                    Console.WriteLine("View Profile");
 
-                Console.Write("Enter your choice: ");
-                string choice = Console.ReadLine();
-
-                switch (choice)
-                {
-                    case "1":
+                    bool isViewingProfile = true;
+                    while (isViewingProfile)
+                    {
+                        // Display profile information and actions here
                         ViewProfile(email, password);
-                        break;
-                    case "2":
-                        ViewBlogs(email, password);
-                        break;
-                    case "3":
-                        DeleteBlog(email, password);
-                        break;
-                    case "4":
-                        EditBlogs(email, password);
-                        break;
-                    case "5":
-                        CreateBlog(email, password);
-                        break;
-                    case "6":
-                        Console.WriteLine("Logging out and exiting User Dashboard...");
-                        isLoggedIn = false; // Set isLoggedIn to false to show the login screen again
-                        break;
-                    default:
-                        Console.WriteLine("Invalid choice.");
-                        break;
-                }
 
-                Console.WriteLine();
+                        Console.WriteLine();
+                        Console.ForegroundColor = ConsoleColor.Blue;
+                        Console.WriteLine("1. Edit Profile");
+                            Console.ForegroundColor = ConsoleColor.DarkMagenta;
+                        Console.WriteLine("2. Change Password");
+                        Console.ForegroundColor = ConsoleColor.Cyan;
+                        Console.WriteLine("3. Back");
+
+                        Console.Write("Enter your choice: ");
+                        string profileChoice = Console.ReadLine();
+
+                        Console.Clear();
+
+                        switch (profileChoice)
+                        {
+                            case "1":
+                                Console.WriteLine("Editing Profile");
+                                // Implement the logic for editing the profile
+                                EditUser(email, password);
+                                break;
+                            case "2":
+                                Console.WriteLine("Changing Password");
+                                // Implement the logic for changing the password
+                                break;
+                            case "3":
+                                Console.WriteLine("Going back to User Dashboard...");
+                                isViewingProfile = false; // Exit the profile view loop and go back to the User Dashboard
+                                break;
+                            default:
+                                Console.WriteLine("Invalid choice.");
+                                break;
+                        }
+
+                        Console.WriteLine();
+                    }
+                    break;
+
+                case "2":
+                    Console.WriteLine("View Blogs");
+                    ViewBlogs(email, password);
+                    break;
+                case "3":
+                    Console.WriteLine("Delete Blogs");
+                    DeleteBlog(email, password);
+                    break;
+                case "4":
+                    Console.WriteLine("Edit Blogs");
+                    EditBlogs(email, password);
+                    break;
+                case "5":
+                    Console.WriteLine("Create Blog");
+                    CreateBlog(email, password);
+                    break;
+                //case "6":
+                //    Console.WriteLine("Edit User");
+                //    EditUser(email, password);
+                //    break;
+                case "6":
+                    Console.WriteLine("Logging out and exiting User Dashboard...");
+                    isLoggedIn = false; // Set isLoggedIn to false to show the login screen again
+                    break;
+                default:
+                    Console.WriteLine("Invalid choice.");
+                    break;
             }
 
-            if (!isLoggedIn)
-            {
-                Console.WriteLine("You are now logged out.");
-                Console.WriteLine("Please log in to continue.");
-                login.LoginSystem(); // Call the LoginSystem method to show the login screen again
-            }
+            Console.WriteLine();
         }
-        public void ViewProfile(string email, string password)
+
+        if (!isLoggedIn)
+        {
+            Console.WriteLine("You are now logged out.");
+            Console.WriteLine("Please log in to continue.");
+            login.LoginSystem(); // Call the LoginSystem method to show the login screen again
+        }
+    }
+
+    public void ViewProfile(string email, string password)
         {
             Console.WriteLine("Viewing Profile...");
 
@@ -110,6 +193,7 @@ namespace ConsoleApp3
                     }
                 }
             }
+
         }
         public void ViewBlogs(string email, string password)
         {
@@ -364,7 +448,69 @@ namespace ConsoleApp3
                 }
             }
         }
+        
+        //editing Student Table with the help of EntityFramework
+        public void EditUser(string email, string password)
+        {
+            using (var context = new TestDatabaseEntities1())
+            {
+                var student = context.Students.FirstOrDefault(s => s.email == email && s.Password == password);
 
+                if (student == null)
+                {
+                    Console.WriteLine("Student not found.");
+                    return;
+                }
+
+                Console.WriteLine("Current Student Details:");
+                Console.WriteLine("Name: " + student.Name);
+                Console.WriteLine("Email: " + student.email);
+                Console.WriteLine("Gender: " + student.Gender);
+                Console.WriteLine("Age: " + student.Age);
+                Console.WriteLine("DepartmentID: " + student.DepartmentID);
+
+                Console.WriteLine("What field would you like to edit?");
+                Console.WriteLine("1. Name");
+                Console.WriteLine("2. Email");
+                Console.WriteLine("3. Gender");
+                Console.WriteLine("4. Age");
+                Console.WriteLine("5. DepartmentID");
+
+                Console.Write("Enter your choice: ");
+                int choice = Convert.ToInt32(Console.ReadLine());
+
+                switch (choice)
+                {
+                    case 1:
+                        Console.Write("Enter the new Name: ");
+                        student.Name = Console.ReadLine();
+                        break;
+                    case 2:
+                        Console.Write("Enter the new Email: ");
+                        student.email = Console.ReadLine();
+                        break;
+                    case 3:
+                        Console.Write("Enter the new Gender: ");
+                        student.Gender = Console.ReadLine();
+                        break;
+                    case 4:
+                        Console.Write("Enter the new Age: ");
+                        student.Age = Convert.ToInt32(Console.ReadLine());
+                        break;
+                    case 5:
+                        Console.Write("Enter the new DepartmentID: ");
+                        student.DepartmentID = Convert.ToInt32(Console.ReadLine());
+                        break;
+                    default:
+                        Console.WriteLine("Invalid choice. No fields were updated.");
+                        return;
+                }
+
+                context.SaveChanges();
+
+                Console.WriteLine("Student details updated successfully!");
+            }
+        }
 
     }
 }

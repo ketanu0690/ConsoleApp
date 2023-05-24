@@ -5,3 +5,15 @@ C:\Users\ketan\source\repos\ConsoleApp3\obj\Debug\ConsoleAppCSHARP.csproj.Assemb
 C:\Users\ketan\source\repos\ConsoleApp3\obj\Debug\ConsoleAppCSHARP.csproj.CoreCompileInputs.cache
 C:\Users\ketan\source\repos\ConsoleApp3\obj\Debug\ConsoleApp3.exe
 C:\Users\ketan\source\repos\ConsoleApp3\obj\Debug\ConsoleApp3.pdb
+C:\Users\ketan\Source\Repos\ConsoleApp\ConsoleApp3\bin\Debug\ConsoleApp3.exe.config
+C:\Users\ketan\Source\Repos\ConsoleApp\ConsoleApp3\bin\Debug\ConsoleApp3.exe
+C:\Users\ketan\Source\Repos\ConsoleApp\ConsoleApp3\bin\Debug\ConsoleApp3.pdb
+C:\Users\ketan\Source\Repos\ConsoleApp\ConsoleApp3\bin\Debug\EntityFramework.dll
+C:\Users\ketan\Source\Repos\ConsoleApp\ConsoleApp3\bin\Debug\EntityFramework.SqlServer.dll
+C:\Users\ketan\Source\Repos\ConsoleApp\ConsoleApp3\bin\Debug\EntityFramework.xml
+C:\Users\ketan\Source\Repos\ConsoleApp\ConsoleApp3\bin\Debug\EntityFramework.SqlServer.xml
+C:\Users\ketan\Source\Repos\ConsoleApp\ConsoleApp3\obj\Debug\ConsoleAppCSHARP.csproj.AssemblyReference.cache
+C:\Users\ketan\Source\Repos\ConsoleApp\ConsoleApp3\obj\Debug\ConsoleAppCSHARP.csproj.CoreCompileInputs.cache
+C:\Users\ketan\Source\Repos\ConsoleApp\ConsoleApp3\obj\Debug\ConsoleAppCSHARP.csproj.CopyComplete
+C:\Users\ketan\Source\Repos\ConsoleApp\ConsoleApp3\obj\Debug\ConsoleApp3.exe
+C:\Users\ketan\Source\Repos\ConsoleApp\ConsoleApp3\obj\Debug\ConsoleApp3.pdb
